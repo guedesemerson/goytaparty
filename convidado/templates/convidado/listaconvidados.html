@@ -1,0 +1,99 @@
+{%extends 'convidado/base.html'%}
+{% load bootstrap %}
+{%load static%}
+{%block menu%}
+
+<nav class="navbar navbar-dark bg-dark">
+  <!-- Conteúdo do navbar -->
+
+    <ul class="nav">
+      <li class="nav-item">
+        <a  class="nav-link text-light bg-dark"  href="{%url 'eventos'%}">Eventos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active text-light bg-dark" href="{%url 'convidados'%}">Convidados</a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link text-light bg-dark" href="{%url 'logout'%}" >Logout</a>
+      </li>
+    </ul>
+    <div>
+        <img src="{% static '/img/cerveja.png'%}">
+    </div>
+</nav>
+
+{%endblock%}
+{%block main%}
+
+
+<div class="row" class="col-sm-6" >
+    <div  class="col-sm-6" >
+        <h2 align="center">Convidados</h2>
+        <form  action= "{% url 'novoConvidado' %}" method ="POST">
+            {%csrf_token%}
+            {{ form|bootstrap_horizontal }}
+            <button type="submit" class="btn btn-dark">Cadastrar</button>
+        </form>
+    </div>
+    <div class="col-sm-6">
+        <h2 align="center">Lista Convidados</h2>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Nº</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Idade</th>
+                  <th scope="col">Identidade</th>
+                  <th scope="col">confirmado</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Excluir</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%for convidados in convidados%}
+                <tr>
+                  <th scope="row">{{convidados.id}}</th>
+                  <td>{{convidados.nome}}</td>
+                  <td>{{convidados.idade}}</td>
+                  <td>{{convidados.identidade}}</td>
+                  {%if convidados.confirmado == True %}
+                    <td>
+                        <a   class="btn btn-outline-dark" >
+                          <i class="fa fa-thumbs-o-up"></i>
+                        </a>
+                    </td>
+                  {%else%}
+                    <td>
+                        <a   class="btn btn-outline-dark" >
+                          <i class="fa fa-thumbs-o-down"></i>
+                        </a>
+                    </td>
+                   {%endif%}
+                  <td>
+                      <a class="btn btn-outline-dark" href="{%url 'convidadoUpdate' convidados.id %}">
+                          <i class="fas fa-user-edit"></i>
+                      </a>
+                  </td>
+                  <td>
+                      <a  class="btn btn-outline-dark" href="{%url 'convidadoDelete' convidados.id %}">
+                          <i class="fas fa-trash" ></i>
+                      </a>
+                  </td>
+                </tr>
+                {%endfor%}
+              </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+{%endblock%}
+
+
+
+
+
+
+
