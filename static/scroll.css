@@ -6,3 +6,8 @@ overflow: auto;
 .table-wrapper-scroll-y {
 display: block;
 }
+
+.anyClass {
+  height:485px;
+  overflow-y: scroll;
+}

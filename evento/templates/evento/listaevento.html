@@ -23,9 +23,6 @@
 
 {%endblock%}
 {%block main%}
-<br>
-
-
 <div class="row">
     <div class="col-sm-6">
         <form action= "{% url 'newEvento' %}" method ="POST">
@@ -37,46 +34,48 @@
     </div>
     <div class="col-sm-6">
         <h2 align="center">Lista Eventos</h2>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-            <table class="table" >
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Nº</th>
-                  <th scope="col">Festa</th>
-                  <th scope="col">Data</th>
-                  <th scope="col">Local</th>
-                  <th scope="col">Endereço</th>
-                  <th scope="col">Convidados</th>
-                  <th scope="col">Deletar</th>
-                  <th scope="col">Editar</th>
-                </tr>
-              </thead>
-              <tbody>
-                {%for eventos in eventos%}
-                <tr>
-                  <th scope="row">{{eventos.id}}</th>
-                  <td>{{eventos.nome_festa}}</td>
-                  <td>{{eventos.data}}</td>
-                  <td>{{eventos.local}}</td>
-                  <td>{{eventos.endereco}}</td>
-                  <td>
-                      <a class="btn btn-outline-dark" href="{%url 'convidadoEvento' eventos.id %}">
-                          <i class="fas fa-user-alt"></i>
-                      </a>
-                  </td>
-                  <td>
-                      <a class="btn btn-outline-dark" href="{%url 'deleteEvento' eventos.id %} ">
-                          <i class="fas fa-trash"></i>
-                      </a>
-                  </td>
-                  <td>
-                      <a class="btn btn-outline-dark" href="{%url 'updateEvento' eventos.id %} ">
-                          <i class="fas fa-user-edit"></i>
-                      </a>
-                  </td>
-                </tr>
-                {%endfor%}
-              </tbody>
+        <table class="table" >
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Festa</th>
+              <th scope="col">Data</th>
+              <th scope="col">Local</th>
+              <th scope="col">Endereço</th>
+              <th scope="col">Convidados</th>
+              <th scope="col">Deletar</th>
+              <th scope="col">Editar</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="anyClass">
+            <table class="table">
+                <tbody>
+                    {%for eventos in eventos%}
+                    <tr>
+                      <th scope="row">{{eventos.id}}</th>
+                      <td>{{eventos.nome_festa}}</td>
+                      <td>{{eventos.data}}</td>
+                      <td>{{eventos.local}}</td>
+                      <td>{{eventos.endereco}}</td>
+                      <td>
+                          <a class="btn btn-outline-dark" href="{%url 'convidadoEvento' eventos.id %}">
+                              <i class="fas fa-user-alt"></i>
+                          </a>
+                      </td>
+                      <td>
+                          <a class="btn btn-outline-dark" href="{%url 'deleteEvento' eventos.id %} ">
+                              <i class="fas fa-trash"></i>
+                          </a>
+                      </td>
+                      <td>
+                          <a class="btn btn-outline-dark" href="{%url 'updateEvento' eventos.id %} ">
+                              <i class="fas fa-user-edit"></i>
+                          </a>
+                      </td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
             </table>
         </div>
     </div>

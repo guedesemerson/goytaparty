@@ -20,59 +20,63 @@
 </nav>
 {%endblock%}
 {%block main%}
+
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 ">
         <h2 >Convidados</h2>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Idade</th>
+              <th scope="col">Identidade</th>
+              <th scope="col">Confirmado</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Excluir</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="anyClass">
             <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Nº</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Idade</th>
-                  <th scope="col">Identidade</th>
-                  <th scope="col">Confirmado</th>
-                  <th scope="col">Editar</th>
-                  <th scope="col">Excluir</th>
-                </tr>
-              </thead>
-              <tbody>
-                {%for convidados in convidados%}
-                <tr>
-                  <th scope="row">{{convidados.id}}</th>
-                  <td>{{convidados.nome}}</td>
-                  <td>{{convidados.idade}}</td>
-                  <td>{{convidados.identidade}}</td>
-                  {%if convidados.confirmado == True %}
-                    <td>
-                        <a   class="btn btn-outline-dark" >
-                          <i class="fa fa-thumbs-o-up"></i>
-                        </a>
-                    </td>
-                  {%else%}
-                    <td>
-                        <a   class="btn btn-outline-dark" >
-                          <i class="fa fa-thumbs-o-down"></i>
-                        </a>
-                    </td>
-                   {%endif%}
-                  <td>
-                      <a   class="btn btn-outline-dark" href="{%url 'convidadoUpdate' convidados.id %}">
-                          <i class="fas fa-user-edit"></i>
-                      </a>
-                  </td>
-                  <td>
-                      <a class="btn btn-outline-dark" href="{%url 'convidadoDelete' convidados.id %}">
-                          <i class="fas fa-trash" ></i>
-                      </a>
-                  </td>
-                </tr>
-                {%endfor%}
-              </tbody>
+                <tbody>
+                    {%for convidados in convidados%}
+                    <tr>
+                      <th scope="row">{{convidados.id}}</th>
+                      <td>{{convidados.nome}}</td>
+                      <td>{{convidados.idade}}</td>
+                      <td>{{convidados.identidade}}</td>
+                      {%if convidados.confirmado == True %}
+                        <td>
+                            <a   class="btn btn-outline-dark" >
+                              <i class="fa fa-thumbs-o-up"></i>
+                            </a>
+                        </td>
+                      {%else%}
+                        <td>
+                            <a   class="btn btn-outline-dark" >
+                              <i class="fa fa-thumbs-o-down"></i>
+                            </a>
+                        </td>
+                       {%endif%}
+                      <td>
+                          <a   class="btn btn-outline-dark" href="{%url 'convidadoUpdate' convidados.id %}">
+                              <i class="fas fa-user-edit"></i>
+                          </a>
+                      </td>
+                      <td>
+                          <a class="btn btn-outline-dark" href="{%url 'convidadoDelete' convidados.id %}">
+                              <i class="fas fa-trash" ></i>
+                          </a>
+                      </td>
+                    </tr>
+                    {%endfor%}
+                  </tbody>
             </table>
         </div>
     </div>
 </div>
+
 {%endblock%}
 
 
