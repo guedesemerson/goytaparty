@@ -14,13 +14,15 @@
     <link rel="shortcut icon" href="{% static '/img/cervejaico.ico'%}" />
 </head>
 <body style="background: linear-gradient(110deg, #FEAC5E, #C779D0, #4BC0C8 );">
-    {%block menu%}
-    {%endblock%}
     <div class="container-fluid">
-        {%block main%}
+        {%block menu%}
         {%endblock%}
+
+            {%block main%}
+            {%endblock%}
+
+        {% include 'footer.html' %}
     </div>
-    {% include 'footer.html' %}
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
