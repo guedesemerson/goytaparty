@@ -23,8 +23,8 @@
 
 {%endblock%}
 {%block main%}
-<div class="row">
-    <div class="col-sm-6">
+<div class="row justify-content-md-center">
+    <div class="col-lg-4">
         <form action= "{% url 'newEvento' %}" method ="POST">
             <h2 align="center">Eventos</h2>
             {%csrf_token%}
@@ -32,7 +32,7 @@
             <button type="submit" class="btn btn-dark">Cadastrar</button>
         </form>
     </div>
-    <div class="col-sm-6">
+    <div class="col-lg-7 overflow-auto">
         <h2 align="center">Lista Eventos</h2>
         <table class="table" >
           <thead class="thead-dark">

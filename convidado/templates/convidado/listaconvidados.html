@@ -24,8 +24,8 @@
 
 {%endblock%}
 {%block main%}
-<div class="row" class="col-sm-6" >
-    <div  class="col" >
+<div class="row justify-content-md-center" >
+    <div  class="col-lg-4" >
         <h2 align="center">Convidados</h2>
         <form  action= "{% url 'novoConvidado' %}" method ="POST">
             {%csrf_token%}
@@ -34,7 +34,7 @@
         </form>
     </div>
 
-    <div class="col overflow-auto">
+    <div class="col-lg-7 overflow-auto">
         <h2 align="center">Lista Convidados</h2>
         <table class="table">
           <thead class="thead-dark">
