@@ -24,69 +24,67 @@
 
 {%endblock%}
 {%block main%}
-<div class="container-fluid">
-    <div class="row" class="col-sm-6" >
-        <div  class="col-sm-6" >
-            <h2 align="center">Convidados</h2>
-            <form  action= "{% url 'novoConvidado' %}" method ="POST">
-                {%csrf_token%}
-                {{ form|bootstrap }}
-                <button type="submit" class="btn btn-dark">Cadastrar</button>
-            </form>
-        </div>
+<div class="row" class="col-sm-6" >
+    <div  class="col-sm-4" >
+        <h2 align="center">Convidados</h2>
+        <form  action= "{% url 'novoConvidado' %}" method ="POST">
+            {%csrf_token%}
+            {{ form|bootstrap }}
+            <button type="submit" class="btn btn-dark">Cadastrar</button>
+        </form>
+    </div>
 
-        <div class="col-sm-6 overflow-auto">
-            <h2 align="center">Lista Convidados</h2>
+    <div class="col-sm-6 overflow-auto">
+        <h2 align="center">Lista Convidados</h2>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Nascimento</th>
+              <th scope="col">Identidade</th>
+              <th scope="col">confirmado</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Excluir</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="anyClass">
             <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Nº</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Nascimento</th>
-                  <th scope="col">Identidade</th>
-                  <th scope="col">confirmado</th>
-                  <th scope="col">Editar</th>
-                  <th scope="col">Excluir</th>
-                </tr>
-              </thead>
+                <tbody>
+                    {%for convidados in convidados%}
+                    <tr>
+                      <th scope="row">{{convidados.id}}</th>
+                      <td>{{convidados.nome}}</td>
+                      <td>{{convidados.nascimento}}</td>
+                      <td>{{convidados.identidade}}</td>
+                      {%if convidados.confirmado == True %}
+                        <td>
+                            <a   class="btn btn-outline-dark" >
+                              <i class="fa fa-thumbs-o-up"></i>
+                            </a>
+                        </td>
+                      {%else%}
+                        <td>
+                            <a   class="btn btn-outline-dark" >
+                              <i class="fa fa-thumbs-o-down"></i>
+                            </a>
+                        </td>
+                       {%endif%}
+                      <td>
+                          <a class="btn btn-outline-dark" href="{%url 'convidadoUpdate' convidados.id %}">
+                              <i class="fas fa-user-edit"></i>
+                          </a>
+                      </td>
+                      <td>
+                          <a  class="btn btn-outline-dark" href="{%url 'convidadoDelete' convidados.id %}">
+                              <i class="fas fa-trash" ></i>
+                          </a>
+                      </td>
+                    </tr>
+                    {%endfor%}
+                  </tbody>
             </table>
-            <div class="anyClass">
-                <table class="table">
-                    <tbody>
-                        {%for convidados in convidados%}
-                        <tr>
-                          <th scope="row">{{convidados.id}}</th>
-                          <td>{{convidados.nome}}</td>
-                          <td>{{convidados.nascimento}}</td>
-                          <td>{{convidados.identidade}}</td>
-                          {%if convidados.confirmado == True %}
-                            <td>
-                                <a   class="btn btn-outline-dark" >
-                                  <i class="fa fa-thumbs-o-up"></i>
-                                </a>
-                            </td>
-                          {%else%}
-                            <td>
-                                <a   class="btn btn-outline-dark" >
-                                  <i class="fa fa-thumbs-o-down"></i>
-                                </a>
-                            </td>
-                           {%endif%}
-                          <td>
-                              <a class="btn btn-outline-dark" href="{%url 'convidadoUpdate' convidados.id %}">
-                                  <i class="fas fa-user-edit"></i>
-                              </a>
-                          </td>
-                          <td>
-                              <a  class="btn btn-outline-dark" href="{%url 'convidadoDelete' convidados.id %}">
-                                  <i class="fas fa-trash" ></i>
-                              </a>
-                          </td>
-                        </tr>
-                        {%endfor%}
-                      </tbody>
-                </table>
-            </div>
         </div>
     </div>
 </div>
