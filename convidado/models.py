@@ -6,12 +6,12 @@ class Convidado(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,default=1, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
     nascimento = models.DateField()
-    identidade = models.CharField(max_length=9,null=True, blank=True)
+    identidade = models.CharField(max_length=9,null=True, default=None, blank=True)
     confirmado = models.BooleanField()
 
 
     def __str__(self):
-        return self.nome +'-'+ self.identidade
+        return str(self.nome) +'-'+ str(self.identidade)
 
 
 

@@ -13,7 +13,6 @@ def listaconvidados(request):
 
 @login_required()
 def updateconvidado(request, id):
-    print(request.POST)
     convidado = Convidado.objects.get(id=id)
     form = ConvidadoForm(request.user,request.POST or None, instance=convidado)
     if request.method == 'POST':

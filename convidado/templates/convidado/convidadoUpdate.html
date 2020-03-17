@@ -22,9 +22,9 @@
 </nav>
 {%endblock%}
 {%block main%}
-<div class="row">
-    <div class="col">
-        <h2 align="center">Editar</h2>
+<div class="row justify-content-md-center">
+    <div class="col-lg-5">
+        <h2 align="center">Editar Convidado</h2>
 
         <form action= "{% url 'convidadoUpdate' convidado.id %}" method ="POST">
             {%csrf_token%}
@@ -32,6 +32,7 @@
             <button type="submit" class="btn btn-dark">Atualizar</button>
             <a href="{%url 'convidadoDelete' convidado.id %}" class="btn btn-danger">Deletar</a>
         </form>
+        <br>
     </div>
 </div>
 {%endblock%}
