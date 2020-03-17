@@ -1,7 +1,7 @@
 {%extends 'convidado/base.html'%}
 {%load static%}
 {%block menu%}
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark rounded">
   <!-- Conteúdo do navbar -->
     <ul class="nav">
       <li class="nav-item">
@@ -38,7 +38,8 @@
           </thead>
         </table>
         <div class="anyClass">
-            <table class="table">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar.." class="text-light bg-dark rounded">
+            <table class="table" id="myTable">
                 <tbody>
                     {%for convidados in convidados%}
                     <tr>

@@ -2,7 +2,7 @@
 {% load bootstrap %}
 {%load static%}
 {%block menu%}
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark rounded">
   <!-- Conteúdo do navbar -->
 
     <ul class="nav">
@@ -15,6 +15,9 @@
       <li class="nav-item">
          <a class="nav-link text-light bg-dark" href="{%url 'logout'%}" >Logout</a>
       </li>
+
+
+
     </ul>
     <div>
         <img src="{% static '/img/cerveja.png'%}">
@@ -34,8 +37,8 @@
     </div>
     <div class="col-lg-7 overflow-auto">
         <h2 align="center">Lista Eventos</h2>
-        <table class="table" >
-          <thead class="thead-dark">
+        <table class="table rounded" >
+          <thead class="thead-dark rounded">
             <tr>
               <th scope="col">Nº</th>
               <th scope="col">Festa</th>
@@ -49,7 +52,9 @@
           </thead>
         </table>
         <div class="anyClass">
-            <table class="table">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar.." class="text-light bg-dark rounded">
+
+            <table class="table" id="myTable" >
                 <tbody>
                     {%for eventos in eventos%}
                     <tr>
