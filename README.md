@@ -30,10 +30,10 @@ python manage.py runserver
 
 Sua aplicação por padrão irá executar na url: `http://127.0.0.1:8000`.
 <div>
-<img src="login.png"  altn="Tela de login" />
+<img src="login.png" align="center" alt="Tela de login" />
 </div>
 <br>
 
 <div>
-<img src="principal.png"  altn="Tela principal" />
+<img src="principal.png" align="center" alt="Tela principal" />
 </div>
